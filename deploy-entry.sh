@@ -43,7 +43,7 @@ else
 fi
 
 # replace content with the new bundle (keep .git)
-rm -rf -- ./* .[!.]* 2>/dev/null || true
+find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 cp -r /app/dist/. .
 
 git add -A
