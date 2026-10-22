@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>druk-keys — key service</title>
+<style>
+  :root { --saffron: #e8a33d; --red: #b23a2e; --bg: #101418; --panel: #191e24; --fg: #e6e9ed; --muted: #9aa4ad; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; background: var(--bg); color: var(--fg); }
+  header { border-bottom: 2px solid var(--saffron); padding: 1.6rem 0; background: linear-gradient(180deg, #141a20, var(--bg)); }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 1.25rem; }
+  h1 { margin: 0; font-size: 1.35rem; letter-spacing: .04em; }
+  h1 .dragon { color: var(--saffron); }
+  .tagline { color: var(--muted); margin: .4rem 0 0; font-size: .85rem; }
+  main { padding: 2.2rem 0 4rem; }
+  h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; color: var(--saffron); margin: 2rem 0 .8rem; }
+  .card { background: var(--panel); border: 1px solid #2a323b; border-radius: 8px; padding: 1.1rem 1.25rem; }
+  code { background: #232a32; padding: .14rem .45rem; border-radius: 4px; color: #7ed69b; font-size: .88rem; word-break: break-all; }
+  a { color: #6fb3ff; text-decoration: none; }
+  dl { display: grid; grid-template-columns: 9rem 1fr; row-gap: .5rem; margin: 0; font-size: .88rem; }
+  dt { color: var(--muted); }
+  dd { margin: 0; }
+  footer { border-top: 1px solid #2a323b; color: var(--muted); font-size: .78rem; padding: 1.4rem 0 3rem; }
+  .seal { display: inline-flex; align-items: center; gap: .6rem; }
+  .seal .dot { width: 10px; height: 10px; background: var(--red); border-radius: 2px; transform: rotate(45deg); }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1><span class="dragon">དྲུག</span> druk-keys</h1>
+    <p class="tagline">public key distribution for Druk identity services</p>
+  </div>
+</header>
+<main class="wrap">
+  <div class="card">
+    <h2>Service status</h2>
+    <p><span class="seal"><span class="dot"></span> operational</span></p>
+    <h2>Signing key</h2>
+    <dl>
+      <dt>key id (kid)</dt><dd><code>druk-key-1</code></dd>
+      <dt>algorithm</dt><dd><code>RS256</code></dd>
+      <dt>key use</dt><dd><code>sig</code></dd>
+      <dt>format</dt><dd>JWKS (RFC 7517)</dd>
+    </dl>
+  </div>
+  <h2>Key set endpoint</h2>
+  <div class="card">
+    <p><a href="/protocol/openid-connect/certs">/protocol/openid-connect/certs</a></p>
+    <p>Consumers fetch the public signing key set from this path to verify tokens issued by this service.</p>
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    druk-keys · Thimphu, Bhutan · public key material only — no secrets are stored or served by this site.
+  </div>
+</footer>
+</body>
+</html>

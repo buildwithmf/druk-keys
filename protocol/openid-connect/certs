@@ -1,0 +1,12 @@
+{
+  "keys": [
+    {
+      "kid": "druk-key-1",
+      "kty": "RSA",
+      "alg": "RS256",
+      "use": "sig",
+      "n": "yfrZV6jJnPBDpWxtbzmK9J1kh3JB4tlXFhA_EHwzcsfcIbeeTmX0YtlVTFheXGn_nCWSXMRmgaOotwo4i6WxYBHMs8LEg0ZLzQflsssqi7Z5hFTdxWxE26N-gF_eKdo_264tGrtZ7vl2qn-L6a41L7RQBKLlB49VH9whGJlRrCkOkJB5yVvYlclJ5joiWYT4f-sY9zFKulRAQEsqr_4hjlqh33b2Ekxa6NEKu2S8llgwPac1Y-gRsk-9weO9111Ub9R57JXSyiu3V4S1u09HMmHG8FHgjYOmCcnj5Osqb6wlbVg2S8DIv1_nhnY7kLz3MOfnhGXJRrPbenbSp2I3iw",
+      "e": "AQAB"
+    }
+  ]
+}
