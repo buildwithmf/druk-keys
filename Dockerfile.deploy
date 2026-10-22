@@ -1,0 +1,12 @@
+# Deploy-only image: git + curl, pushes the static bundle (dist/) to the
+# GitHub Pages branch of the target repo.
+FROM alpine:3.20
+
+RUN apk add --no-cache git curl
+
+WORKDIR /app
+
+COPY deploy-entry.sh /usr/local/bin/deploy-entry.sh
+RUN chmod +x /usr/local/bin/deploy-entry.sh
+
+ENTRYPOINT ["deploy-entry.sh"]

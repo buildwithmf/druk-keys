@@ -1,0 +1,39 @@
+services:
+  keygen:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    entrypoint: ["node", "scripts/gen-keys.mjs"]
+    environment:
+      - KID=${KID:-druk-key-1}
+      - ROTATE=${ROTATE:-}
+
+  serve:
+    image: nginx:alpine
+    ports:
+      - "${SERVE_PORT:-9999}:80"
+    volumes:
+      - ./public:/usr/share/nginx/html:ro
+      - ./generated:/srv/generated:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - keygen
+
+  build:
+    build:
+      context: .
+      dockerfile: Dockerfile.build
+    volumes:
+      - ./dist:/app/dist
+
+  deploy:
+    build:
+      context: .
+      dockerfile: Dockerfile.deploy
+    volumes:
+      - ./dist:/app/dist
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN:-}
+      - GITHUB_REPO=${GITHUB_REPO:-}
+      - PAGES_BRANCH=${PAGES_BRANCH:-gh-pages}

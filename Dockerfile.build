@@ -1,0 +1,18 @@
+# Stage: assemble the static bundle (public/ + generated JWKS) for GitHub Pages.
+# The container is a build tool only; Pages hosts the static files.
+# Bundle is assembled at /built inside the image, then copied into the mounted
+# ./dist volume when the container runs.
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY public/ public/
+COPY generated/ generated/
+
+RUN mkdir -p /built/protocol/openid-connect \
+  && cp -r public/. /built/ \
+  && cp generated/certs /built/protocol/openid-connect/certs \
+  && touch /built/.nojekyll \
+  && echo 'static bundle ready'
+
+CMD ["sh", "-c", "cp -r /built/. /app/dist/ && echo 'dist/ populated:' && ls -R /app/dist"]
